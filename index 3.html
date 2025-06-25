@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clayton's Weather - SPC Outlook</title>
+  <style>
+    body {
+      background-color: #d0e8ff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    h1 {
+      background-color: #005f99;
+      color: white;
+      padding: 1rem;
+      margin: 0;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background-color: #007acc;
+      flex-wrap: wrap;
+    }
+    .tab {
+      padding: 1rem;
+      cursor: pointer;
+      color: white;
+      flex: 1;
+      min-width: 100px;
+      text-align: center;
+    }
+    .tab.active {
+      background-color: #005f99;
+    }
+    .outlook {
+      display: none;
+      margin: 20px auto;
+      max-width: 100%;
+    }
+    .outlook.active {
+      display: block;
+    }
+    .img-container {
+      width: 100%;
+      max-width: 850px;
+      height: 600px;
+      overflow: hidden;
+      margin: 0 auto;
+      position: relative;
+    }
+    .img-container img {
+      position: absolute;
+      top: -100px;
+      left: -200px;
+      width: 1600px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Clayton's Weather - SPC Outlook (South-Central USA)</h1>
+  <div class="tabs">
+    <div class="tab active" onclick="showOutlook(0)">Day 1</div>
+    <div class="tab" onclick="showOutlook(1)">Day 2</div>
+    <div class="tab" onclick="showOutlook(2)">Day 3</div>
+    <div class="tab" onclick="showOutlook(3)">Days 4-8</div>
+  </div>
+
+  <div class="outlook active">
+    <div class="img-container">
+      <img src="https://www.spc.noaa.gov/products/outlook/day1otlk.png" alt="Day 1 Outlook">
+    </div>
+  </div>
+  <div class="outlook">
+    <div class="img-container">
+      <img src="https://www.spc.noaa.gov/products/outlook/day2otlk.png" alt="Day 2 Outlook">
+    </div>
+  </div>
+  <div class="outlook">
+    <div class="img-container">
+      <img src="https://www.spc.noaa.gov/products/outlook/day3otlk.png" alt="Day 3 Outlook">
+    </div>
+  </div>
+  <div class="outlook">
+    <div class="img-container">
+      <img src="https://www.spc.noaa.gov/products/exper/day48otlk.png" alt="Day 4-8 Outlook">
+    </div>
+  </div>
+
+  <script>
+    function showOutlook(index) {
+      const tabs = document.querySelectorAll('.tab');
+      const outlooks = document.querySelectorAll('.outlook');
+      tabs.forEach((tab, i) => {
+        tab.classList.toggle('active', i === index);
+        outlooks[i].classList.toggle('active', i === index);
+      });
+    }
+  </script>
+</body>
+</html>
